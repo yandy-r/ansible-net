@@ -46,4 +46,5 @@ network devices across various vendors and platforms.
 - **Contributing**: Details how users can contribute to the repository.
 
 This `README.md` will guide users in understanding and using the repository effectively
-for network automation tasks. Adjust the example URLs, hostnames, and device-specific configurations as needed.
+for network automation tasks. Adjust the example URLs, hostnames, and device-specific
+configurations as needed.
