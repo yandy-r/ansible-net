@@ -8,3 +8,8 @@
     - name: Gather facts
       cisco.nxos.nxos_facts:
         gather_subset: all
+
+    - name: Write facts to nice json file
+      copy:
+        content: "{{ ansible_facts | to_nice_json }}"
+        dest: "tmp/{{ inventory_hostname }}_facts.json"
