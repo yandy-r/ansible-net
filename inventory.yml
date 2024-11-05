@@ -1,25 +1,22 @@
 all:
+  vars:
+    ansible_ssh_common_args: "_o StrictHostKeyChecking=no"
   hosts:
-    ubuntu-1:
-      ansible_host: 172.21.201.101
-      ansible_user: user
-    dc1-spine1:
-      ansible_host: 172.21.203.11
-      ansible_user: admin
-    dc1-spine2:
-      ansible_host: 172.21.203.12
-      ansible_user: admin
+    ubuntu_1:
+      ansible_host: "172.21.201.101"
+    dc1_spine1:
+      ansible_host: "172.21.203.11"
+    dc1_spine2:
+      ansible_host: "172.21.203.12"
   children:
-    nexus_switches:
+    nxos:
       hosts:
-        dc1-spine1:
-        dc1-spine2:
-    all-network:
+        dc1_spine1:
+        dc1_spine2:
+    all_network:
       hosts:
-        dc1-spine1:
-        dc1-spine2:
-      ansible_ssh_pass: '{{ lookup("env", "ANSIBLE_NETWORK_SSH_PASS") }}'
-    all-servers:
+        dc1_spine1:
+        dc1_spine2:
+    servers:
       hosts:
-        ubuntu-1:
-      ansible_ssh_pass: '{{ lookup("env", "ANSIBLE_SRV_SSH_PASS") }}'
+        ubuntu_1:

@@ -1,0 +1,2 @@
+ansible_user: user
+ansible_pass: '{{ lookup("env", "ANSIBLE_SRV_SSH_PASS") }}'
