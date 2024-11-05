@@ -1,0 +1,10 @@
+- name: Testing Cisco with Ansible
+  connection: ansible.netcommon.network_cli
+  gather_facts: true
+  hosts: nxos
+  collections:
+    - cisco.nxos
+  tasks:
+    - name: Gather facts
+      cisco.nxos.nxos_facts:
+        gather_subset: all
