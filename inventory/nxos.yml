@@ -27,6 +27,11 @@ all:
       hosts:
         dc1_bgw1:
         dc1_bgw2:
+    dc1_nxos:
+      children:
+        dc1_spines:
+        dc1_leafs:
+        dc1_bgws:
     dc1:
       children:
         dc1_spines:
