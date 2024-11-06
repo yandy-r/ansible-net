@@ -1,6 +1,8 @@
 # Main playbook
 #
 - name: Configure Spines
+  gather_facts: false
   hosts: dc1_spine1
   roles:
     - role: spines
+    - role: all
