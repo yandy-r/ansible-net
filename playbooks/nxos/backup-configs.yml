@@ -1,0 +1,10 @@
+- name: Backup Configs for NXOS devices
+  gather_facts: false
+  hosts: nxos
+  tasks:
+    - name: Backup DC1 NXOS Configs
+      cisco.nxos.nxos_config:
+        backup: true
+        backup_options:
+          filename: "{{ inventory_hostname }}-config.cisco"
+          dir_path: config_backups

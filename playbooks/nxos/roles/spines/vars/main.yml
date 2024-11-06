@@ -1,0 +1,22 @@
+---
+# vars file for spines
+spines_features:
+  - { feature: nxapi }
+  - { feature: bash-shell }
+  - { feature: scp-server }
+  - { feature: sftp-server }
+  - { feature: ospf }
+  - { feature: bgp }
+  - { feature: pim }
+  - { feature: nxsdk }
+  - { feature: netconf }
+  - { feature: restconf }
+  - { feature: lldp }
+  - { feature: "nv overlay" }
+
+spines_ospf_process_id: UNDERLAY
+
+spines_ospf_area: 0
+
+spines_address_families:
+  - { afi: l2vpn, safi: evepn }

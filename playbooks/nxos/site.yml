@@ -1,0 +1,6 @@
+# Main playbook
+#
+- name: Configure Spines
+  hosts: dc1_spine1
+  roles:
+    - role: spines
