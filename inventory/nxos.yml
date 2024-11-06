@@ -6,12 +6,37 @@ all:
       ansible_host: "172.21.203.11"
     dc1_spine2:
       ansible_host: "172.21.203.12"
+    dc1_leaf1:
+      ansible_host: "172.21.203.13"
+    dc1_leaf2:
+      ansible_host: "172.21.203.14"
+    dc1_bgw1:
+      ansible_host: "172.21.203.17"
+    dc1_bgw2:
+      ansible_host: "172.21.203.18"
   children:
+    dc1_spines:
+      hosts:
+        dc1_spine1:
+        dc1_spine2:
+    dc1_leafs:
+      hosts:
+        dc1_leaf1:
+        dc1_leaf2:
+    dc1_bgws:
+      hosts:
+        dc1_bgw1:
+        dc1_bgw2:
+    dc1:
+      children:
+        dc1_spines:
+        dc1_leafs:
+        dc1_bgws:
     nxos:
-      hosts:
-        dc1_spine1:
-        dc1_spine2:
+      children:
+        dc1_spines:
+        dc1_leafs:
+        dc1_bgws:
     all_network:
-      hosts:
-        dc1_spine1:
-        dc1_spine2:
+      children:
+        nxos:
