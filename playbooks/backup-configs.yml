@@ -1,4 +1,4 @@
-- name: Backup Configs
+- name: Backup Configs for NXOS devices
   gather_facts: false
   hosts: nxos
   tasks:
