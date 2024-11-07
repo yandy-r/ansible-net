@@ -22,6 +22,29 @@
           - address: "{{ item.addr }}/{{ item.mask }}"
   loop: "{{ loopbacks }}"
 
+- name: Configure Ethernet Interfaces
+  cisco.nxos.nxos_interfaces:
+    config:
+      - name: "{{ item.interface }}"
+        enabled: true
+  loop: "{{ ethernet_l3_interfaces }}"
+
+- name: Configure L3 ethernet interfaces
+  cisco.nxos.nxos_l3_interfaces:
+    config:
+      - name: "{{ item.interface }}"
+        redirects: "{{ item.redirects }}"
+  loop: "{{ ethernet_l3_interfaces }}"
+
+- name: Configure IP unnumbered
+  cisco.nxos.nxos_config:
+    lines:
+      - medium p2p
+      - ip unnumbered loopback0
+    parents:
+      - "interface {{ item.interface }}"
+  loop: "{{ ethernet_l3_interfaces }}"
+
 - name: Save the running configuration
   cisco.nxos.nxos_config:
-    save_when: always
+    save_when: modified

@@ -2,7 +2,7 @@
 #
 - name: Configure Spines
   gather_facts: false
-  hosts: dc1_spine1
+  hosts: nxos
   roles:
     - role: spines
     - role: all
