@@ -13,14 +13,16 @@
       - name: "{{ item.interface }}"
         enabled: true
   loop: "{{ loopbacks }}"
+  when: loopbacks is defined
 
-- name: Configure Interface IP Addresses
+- name: Configure loopbacks IP Addresses
   cisco.nxos.nxos_l3_interfaces:
     config:
       - name: "{{ item.interface }}"
         ipv4:
           - address: "{{ item.addr }}/{{ item.mask }}"
   loop: "{{ loopbacks }}"
+  when: loopbacks is defined
 
 - name: Configure Ethernet Interfaces
   cisco.nxos.nxos_interfaces:
@@ -28,6 +30,7 @@
       - name: "{{ item.interface }}"
         enabled: true
   loop: "{{ ethernet_l3_interfaces }}"
+  when: ethernet_l3_interfaces is defined
 
 - name: Configure L3 ethernet interfaces
   cisco.nxos.nxos_l3_interfaces:
@@ -35,6 +38,7 @@
       - name: "{{ item.interface }}"
         redirects: "{{ item.redirects }}"
   loop: "{{ ethernet_l3_interfaces }}"
+  when: ethernet_l3_interfaces is defined
 
 - name: Configure IP unnumbered
   cisco.nxos.nxos_config:
@@ -44,6 +48,7 @@
     parents:
       - "interface {{ item.interface }}"
   loop: "{{ ethernet_l3_interfaces }}"
+  when: ethernet_l3_interfaces is defined
 
 - name: Save the running configuration
   cisco.nxos.nxos_config:
