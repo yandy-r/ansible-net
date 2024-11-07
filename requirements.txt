@@ -1,3 +1,4 @@
+pip
 ansible-lint
 ansible-pylibssh
 paramiko
