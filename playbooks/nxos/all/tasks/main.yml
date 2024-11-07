@@ -5,7 +5,7 @@
 
 - name: Backup NXOS Configs
   cisco.nxos.nxos_config:
-    backup: true
+    backup: false
     backup_options:
       filename: "{{ inventory_hostname }}-config.cisco"
       dir_path: config_backups
