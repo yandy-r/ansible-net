@@ -44,6 +44,7 @@
   cisco.nxos.nxos_config:
     lines:
       - medium p2p
+      - no ip redirects
       - ip unnumbered loopback0
     parents:
       - "interface {{ item.interface }}"
