@@ -1,0 +1,17 @@
+router_id: 169.254.255.2
+
+loopbacks:
+  - interface: loopback0
+    addr: 169.254.255.2
+    mask: 32
+  - interface: loopback1
+    addr: 169.254.255.100
+    mask: 32
+
+ethernet_l3_interfaces:
+  - interface: Ethernet1/1
+    redirects: false
+    unreachables: false
+  - interface: Ethernet1/2
+    redirects: false
+    unreachables: false
