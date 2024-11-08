@@ -1,2 +1,4 @@
 ---
 # tasks file for leafs
+- name: Save and Backup Config
+  ansible.builtin.include_tasks: config.yml
