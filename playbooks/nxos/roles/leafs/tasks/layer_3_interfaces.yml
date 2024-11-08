@@ -1,3 +1,4 @@
+# File: leafs/tasks/layer_3_interfaces.yml
 ---
 - name: Configure loopback interfaces
   cisco.nxos.nxos_interfaces:
@@ -13,6 +14,8 @@
       - name: "{{ item.interface }}"
         ipv4:
           - address: "{{ item.addr }}/{{ item.mask }}"
+            secondary: "{{ item.secondary | default(omit) }}"
+            tag: "{{ item.tag }}"
   loop: "{{ loopbacks }}"
   when: loopbacks is defined
 
