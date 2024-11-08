@@ -11,6 +11,11 @@ leafs_features:
   - feature: nxsdk
   - feature: netconf
   - feature: restconf
+  - feature: pbr
+  - feature: interface-vlan
+  - feature: vn-segment-vlan-based
+  - feature: lacp
+  - feature: dhcp
   - feature: lldp
   - feature: "nv overlay"
 
