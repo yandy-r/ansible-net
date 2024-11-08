@@ -1,12 +1,4 @@
 ---
-# tasks file for spines
-#
-- name: Enable Features
-  cisco.nxos.nxos_feature:
-    feature: "{{ item.feature }}"
-    state: enabled
-  loop: "{{ spines_features }}"
-
 - name: Configure loopback interfaces
   cisco.nxos.nxos_interfaces:
     config:
@@ -42,7 +34,3 @@
       - "interface {{ item.interface }}"
   loop: "{{ ethernet_l3_interfaces }}"
   when: ethernet_l3_interfaces is defined
-
-- name: Save the running configuration
-  cisco.nxos.nxos_config:
-    save_when: modified
