@@ -4,12 +4,12 @@
   gather_facts: false
   hosts: spines
   roles:
-    - role: spines
     - role: all
+    - role: spines
 
 - name: Configure Leafs
   gather_facts: false
   hosts: leafs
   roles:
-    - role: leafs
     - role: all
+    - role: leafs
