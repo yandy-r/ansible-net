@@ -11,9 +11,9 @@ all:
     dc1_leaf2:
       ansible_host: "172.21.203.14"
     dc1_bgw1:
-      ansible_host: "172.21.203.17"
+      ansible_host: "172.21.203.16"
     dc1_bgw2:
-      ansible_host: "172.21.203.18"
+      ansible_host: "172.21.203.17"
     dc2_spine1:
       ansible_host: "172.21.203.18"
     dc2_spine2:
