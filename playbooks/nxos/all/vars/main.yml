@@ -4,8 +4,10 @@ users:
   - username: "admin"
     password: '{{ lookup("env", "ANSIBLE_NETWORK_SSH_PASS") }}'
     role: "network-admin"
+    sshkey: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
   - username: "cisco"
     password: '{{ lookup("env", "ANSIBLE_NETWORK_SSH_PASS") }}'
+    sshkey: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
     role: "network-admin"
   - username: "ndfc"
     password: '{{ lookup("env", "ANSIBLE_NDFC_PASSWORD") }}'
