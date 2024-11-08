@@ -1,2 +1,8 @@
+# File: leafs/task/main.yml
 ---
-# tasks file for bgws
+- name: Configure global system parameters
+  ansible.builtin.include_tasks: system.yml
+- name: Configure Layer 3
+  ansible.builtin.include_tasks: layer_3_interfaces.yml
+- name: Save and Backup Config
+  ansible.builtin.include_tasks: config.yml

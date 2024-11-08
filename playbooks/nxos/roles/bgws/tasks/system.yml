@@ -1,0 +1,6 @@
+---
+- name: Enable Features
+  cisco.nxos.nxos_feature:
+    feature: "{{ item.feature }}"
+    state: enabled
+  loop: "{{ bgws_features }}"
