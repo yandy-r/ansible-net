@@ -6,3 +6,10 @@
   roles:
     - role: spines
     - role: all
+
+- name: Configure Leafs
+  gather_facts: false
+  hosts: leafs
+  roles:
+    - role: leafs
+    - role: all
