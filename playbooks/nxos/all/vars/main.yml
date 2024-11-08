@@ -1,2 +1,6 @@
 ---
 # vars file for all
+users:
+  - username: "admin"
+    password: '{{ lookup("env", "ANSIBLE_NETWORK_SSH_PASS") }}'
+    role: "network-admin"
