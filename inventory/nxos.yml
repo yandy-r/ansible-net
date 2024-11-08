@@ -74,7 +74,7 @@ all:
       children:
         dc1_leafs:
         dc2_leafs:
-    nxos:
+    all_nxos:
       children:
         dc1_spines:
         dc1_leafs:
