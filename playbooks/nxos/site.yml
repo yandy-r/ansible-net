@@ -1,5 +1,4 @@
 # Main playbook
-#
 - name: Configure Spines
   gather_facts: false
   hosts: spines
@@ -13,3 +12,10 @@
   roles:
     - role: all
     - role: leafs
+
+- name: Configure BGWs
+  gather_facts: false
+  hosts: bgws
+  roles:
+    - role: all
+    - role: bgws
