@@ -32,14 +32,6 @@
   loop: "{{ ethernet_l3_interfaces }}"
   when: ethernet_l3_interfaces is defined
 
-- name: Configure L3 ethernet interfaces
-  cisco.nxos.nxos_l3_interfaces:
-    config:
-      - name: "{{ item.interface }}"
-        redirects: "{{ item.redirects }}"
-  loop: "{{ ethernet_l3_interfaces }}"
-  when: ethernet_l3_interfaces is defined
-
 - name: Configure IP unnumbered
   cisco.nxos.nxos_config:
     lines:
