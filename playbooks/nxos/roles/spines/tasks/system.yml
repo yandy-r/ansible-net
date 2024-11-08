@@ -4,3 +4,7 @@
     feature: "{{ item.feature }}"
     state: enabled
   loop: "{{ spines_features }}"
+
+- name: Configure global evpn Parameters
+  cisco.nxos.nxos_evpn_global:
+    nv_overlay_evpn: true
