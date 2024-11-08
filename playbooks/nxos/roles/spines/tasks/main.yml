@@ -1,3 +1,4 @@
+# File: spines/task/main.yml
 ---
 - name: Configure global system parameters
   ansible.builtin.include_tasks: system.yml
