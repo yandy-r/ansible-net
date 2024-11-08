@@ -3,10 +3,12 @@
   cisco.nxos.nxos_user:
     name: "{{ item.username }}"
     configured_password: "{{ item.password }}"
+    sshkey: "{{ item.sshkey | default(omit) }}"
     role: "{{ item.role }}"
     state: present
     update_password: on_create
   loop: "{{ users }}"
+  when: users is defined
 
 - name: Configure global evpn Parameters
   cisco.nxos.nxos_evpn_global:
