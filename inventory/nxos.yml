@@ -66,6 +66,11 @@ all:
         dc2_spines:
         dc2_leafs:
         dc2_bgws:
+    dc2:
+      children:
+        dc2_spines:
+        dc2_leafs:
+        dc2_bgws:
     spines:
       children:
         dc1_spines:
@@ -74,6 +79,10 @@ all:
       children:
         dc1_leafs:
         dc2_leafs:
+    bgws:
+      children:
+        dc1_bgws:
+        dc2_bgws:
     all_nxos:
       children:
         dc1_spines:
