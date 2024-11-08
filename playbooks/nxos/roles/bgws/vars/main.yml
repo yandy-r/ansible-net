@@ -1,2 +1,29 @@
+# File: leafs/var/main.yml
 ---
-# vars file for bgws
+# vars file for spines
+bgws_features:
+  - feature: nxapi
+  - feature: bash-shell
+  - feature: scp-server
+  - feature: sftp-server
+  - feature: ospf
+  - feature: bgp
+  - feature: pim
+  - feature: nxsdk
+  - feature: netconf
+  - feature: restconf
+  - feature: pbr
+  - feature: interface-vlan
+  - feature: vn-segment-vlan-based
+  - feature: lacp
+  - feature: dhcp
+  - feature: lldp
+  - feature: "nv overlay"
+
+bgws_ospf_process_id: UNDERLAY
+
+bgws_ospf_area: 0
+
+bgws_address_families:
+  - afi: l2vpn
+    safi: evepn
