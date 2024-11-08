@@ -1,0 +1,11 @@
+---
+- name: Save the running configuration
+  cisco.nxos.nxos_config:
+    save_when: modified
+
+- name: Backup NXOS Configs
+  cisco.nxos.nxos_config:
+    backup: false
+    backup_options:
+      filename: "{{ inventory_hostname }}-config.cisco"
+      dir_path: config_backups
