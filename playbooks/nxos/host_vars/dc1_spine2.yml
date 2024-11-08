@@ -4,9 +4,11 @@ loopbacks:
   - interface: loopback0
     addr: 169.254.255.2
     mask: 32
+    tag: 12
   - interface: loopback1
     addr: 169.254.255.100
     mask: 32
+    tag: 54321
 
 ethernet_l3_interfaces:
   - interface: Ethernet1/1
