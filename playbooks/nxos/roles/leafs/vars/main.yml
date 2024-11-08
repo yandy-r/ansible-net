@@ -1,2 +1,23 @@
 ---
-# vars file for leafs
+# vars file for spines
+leafs_features:
+  - feature: nxapi
+  - feature: bash-shell
+  - feature: scp-server
+  - feature: sftp-server
+  - feature: ospf
+  - feature: bgp
+  - feature: pim
+  - feature: nxsdk
+  - feature: netconf
+  - feature: restconf
+  - feature: lldp
+  - feature: "nv overlay"
+
+leafs_ospf_process_id: UNDERLAY
+
+leafs_ospf_area: 0
+
+leafs_address_families:
+  - afi: l2vpn
+    safi: evepn
