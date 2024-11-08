@@ -1,4 +1,4 @@
-# File: leafs/var/main.yml
+# File: bgws/var/main.yml
 ---
 # vars file for spines
 bgws_features:
