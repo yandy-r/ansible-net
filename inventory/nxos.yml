@@ -51,8 +51,8 @@ all:
         dc1_bgws:
     dc2_spines:
       hosts:
-      dc2_spine1:
-      dc2_spine2:
+        dc2_spine1:
+        dc2_spine2:
     dc2_leafs:
       hosts:
         dc2_leaf1:
