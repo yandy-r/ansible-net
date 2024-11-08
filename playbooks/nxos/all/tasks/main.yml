@@ -1,4 +1,12 @@
 ---
+- name: Create users
+  cisco.nxos.nxos_user:
+    name: "{{ item.username }}"
+    configured_password: "{{ item.password }}"
+    role: "{{ item.role }}"
+    state: present
+  loop: "{{ users }}"
+
 - name: Save the running configuration
   cisco.nxos.nxos_config:
     save_when: modified
