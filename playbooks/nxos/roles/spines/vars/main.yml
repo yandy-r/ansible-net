@@ -15,6 +15,14 @@ spines_features:
   - feature: lldp
   - feature: "nv overlay"
 
+spines_nnmp:
+  - community: NETBRAIN
+    group: network-operator
+    state: merged
+  - community: NETBRAIN-RW
+    group: network-admin
+    state: merged
+
 spines_ospf_process_id: UNDERLAY
 
 spines_ospf_area: 0

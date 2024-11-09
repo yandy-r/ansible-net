@@ -1,6 +1,30 @@
+# File: spines/tasks/system.yml
 ---
 - name: Enable Features
   cisco.nxos.nxos_feature:
     feature: "{{ item.feature }}"
-    state: enabled
+    state: "{{ item.state | default('enabled') }}"
   loop: "{{ spines_features }}"
+  when: spines_features is defined
+
+- name: Configure SNMP Server
+  cisco.nxos.nxos_snmp_server:
+    config:
+      communities:
+        - community: "{{ item.community }}"
+          group: "{{ item.group | default('network-operator') }}"
+      location: "{{ snmp.location }}"
+      contact: "{{ snmp.contact }}"
+      hosts:
+        - host: "{{ snmp.host | default(omit) }}"
+          version: "{{ snmp.version | default(omit) }}"
+          source_interface: "{{ snmp.source_interface | default(omit) }}"
+          udp_port: "{{ snmp.port | default(omit) }}"
+          use_vrf: "{{ snmp.use_vrf | default(omit) }}"
+          informs: "{{ snmp.informs | default(omit) }}"
+          traps: "{{ snmp.traps | default(omit) }}"
+          auth: "{{ snmp.auth | default(omit) }}"
+          priv: "{{ snmp.priv | default(omit) }}"
+    state: "{{ item.state | default('merged') }}"
+  loop: "{{ spines_nnmp }}"
+  when: spines_nnmp is defined

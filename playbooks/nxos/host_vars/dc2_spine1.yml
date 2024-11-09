@@ -17,3 +17,7 @@ ethernet_l3_interfaces:
   - interface: Ethernet1/2
     redirects: false
     unreachables: false
+
+snmp:
+  location: DC2
+  contact: yandy@yandy.dev
