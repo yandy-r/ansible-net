@@ -2,6 +2,8 @@
 ---
 - name: Configure global system parameters
   ansible.builtin.include_tasks: system.yml
+- name: Configure Global EVPN Parameters
+  ansible.builtin.include_tasks: evpn-global.yml
 - name: Configure Layer 3
   ansible.builtin.include_tasks: layer_3_interfaces.yml
 - name: Save and Backup Config
