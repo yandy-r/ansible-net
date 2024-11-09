@@ -3,19 +3,19 @@
   gather_facts: false
   hosts: spines
   roles:
-    - role: all
+    - role: all_nxos
     - role: spines
 
 - name: Configure Leafs
   gather_facts: false
   hosts: leafs
   roles:
-    - role: all
+    - role: all_nxos
     - role: leafs
 
 - name: Configure BGWs
   gather_facts: false
   hosts: bgws
   roles:
-    - role: all
+    - role: all_nxos
     - role: bgws
