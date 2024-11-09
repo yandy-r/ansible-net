@@ -16,12 +16,12 @@ spines_features:
   - feature: "nv overlay"
 
 spines_snmp:
-  - community: NETBRAIN
-    group: network-operator
-    state: merged
-  - community: NETBRAIN-RW
-    group: network-admin
-    state: merged
+  communities:
+    - community: NETBRAIN
+      group: network-operator
+    - community: NETBRAIN-RW
+      group: network-admin
+  state: merged
 
 spines_ospf_process_id: UNDERLAY
 
