@@ -26,5 +26,5 @@
           auth: "{{ snmp.auth | default(omit) }}"
           priv: "{{ snmp.priv | default(omit) }}"
     state: "{{ item.state | default('merged') }}"
-  loop: "{{ spines_nnmp }}"
+  loop: "{{ spines_snmp }}"
   when: spines_nnmp is defined

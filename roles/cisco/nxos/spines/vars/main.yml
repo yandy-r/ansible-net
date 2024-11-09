@@ -15,7 +15,7 @@ spines_features:
   - feature: lldp
   - feature: "nv overlay"
 
-spines_nnmp:
+spines_snmp:
   - community: NETBRAIN
     group: network-operator
     state: merged
