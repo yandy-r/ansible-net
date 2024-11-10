@@ -18,6 +18,7 @@ spines_features:
 # System settings for spine switches
 spines_system:
   - hostname: "{{ inventory_hostname }}"
+    system_mtu: 9216
     domain_lookup: true # Enable DNS lookup
     domain_name: "plsnetlab.local" # Domain name for the device
     name_servers:
