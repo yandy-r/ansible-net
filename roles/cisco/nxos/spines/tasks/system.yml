@@ -1,5 +1,12 @@
 # File: spines/tasks/system.yml
 ---
+- name: Enable Features
+  cisco.nxos.nxos_feature:
+    feature: "{{ item.feature }}"
+    state: "{{ item.state | default('enabled') }}"
+  loop: "{{ spines_features }}"
+  when: spines_features is defined
+
 - name: Configure System Settings
   cisco.nxos.nxos_system:
     hostname: "{{ item.hostname | default(inventory_hostname) }}"
@@ -10,13 +17,6 @@
     state: "{{ item.state | default('present') }}"
   loop: "{{ spines_system }}"
   when: spines_system is defined
-
-- name: Enable Features
-  cisco.nxos.nxos_feature:
-    feature: "{{ item.feature }}"
-    state: "{{ item.state | default('enabled') }}"
-  loop: "{{ spines_features }}"
-  when: spines_features is defined
 
 - name: Configure SNMP Server
   cisco.nxos.nxos_snmp_server:
