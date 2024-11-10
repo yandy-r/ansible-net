@@ -15,16 +15,25 @@ spines_features:
   - feature: lldp
   - feature: "nv overlay"
 
+# System settings for spine switches
+spines_system:
+  - hostname: "{{ inventory_hostname }}"
+    domain_lookup: true # Enable DNS lookup
+    domain_name: "plsnetlab.local" # Domain name for the device
+    name_servers:
+      - server: 10.100.51.11 # Primary DNS server
+        vrf: management # VRF for DNS server
+      - server: 10.100.51.12 # Secondary DNS server
+        vrf: management
+
 # SNMP configuration for spine switches
 spines_snmp:
   # SNMP community strings configuration
   communities:
     - community: NETBRAIN # Read-only community string
       group: network-operator # Associated privilege group
-      acl: "" # Optional: Access Control List name/number
     - community: NETBRAIN-RW # Read-write community string
       group: network-admin # Associated privilege group
-      acl: "" # Optional: Access Control List name/number
 
   # System contact information
   contact: "NOC Team" # Contact information for SNMP system
@@ -45,8 +54,8 @@ spines_snmp:
 
   # Global SNMP parameters
   aaa_user_cache_timeout: 3600 # Cache timeout for AAA users in seconds
-  global_enforce_priv: False # Enforce privacy for all SNMP users
-  tcp_session_auth: False # TCP session authentication
+  global_enforce_priv: false # Enforce privacy for all SNMP users
+  tcp_session_auth: false # TCP session authentication
   protocol: true # Enable SNMP protocol
   packetsize: 1500 # Maximum SNMP packet size
 
