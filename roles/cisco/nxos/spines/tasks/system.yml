@@ -2,11 +2,10 @@
 ---
 - name: Configure System Settings
   cisco.nxos.nxos_system:
-    config:
-      hostname: "{{ item.hostname | default(inventory_hostname) }}"
-      domain_lookup: "{{ item.domain_lookup | default(omit) }}"
-      domain_name: "{{ item.domain_name | default(false) }}"
-      name_servers: "{{ item.name_servers | default(omit) }}"
+    hostname: "{{ item.hostname | default(inventory_hostname) }}"
+    domain_lookup: "{{ item.domain_lookup | default(omit) }}"
+    domain_name: "{{ item.domain_name | default(false) }}"
+    name_servers: "{{ item.name_servers | default(omit) }}"
     state: "{{ item.state | default('present') }}"
   loop: "{{ spines_system }}"
   when: spines_system is defined
