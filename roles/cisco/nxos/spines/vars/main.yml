@@ -15,13 +15,51 @@ spines_features:
   - feature: lldp
   - feature: "nv overlay"
 
+# SNMP configuration for spine switches
 spines_snmp:
+  # SNMP community strings configuration
   communities:
-    - community: NETBRAIN
-      group: network-operator
-    - community: NETBRAIN-RW
-      group: network-admin
-  state: merged
+    - community: NETBRAIN # Read-only community string
+      group: network-operator # Associated privilege group
+      acl: "" # Optional: Access Control List name/number
+    - community: NETBRAIN-RW # Read-write community string
+      group: network-admin # Associated privilege group
+      acl: "" # Optional: Access Control List name/number
+
+  # System contact information
+  contact: "NOC Team" # Contact information for SNMP system
+
+  # Physical location information
+  location: "Data Center 1" # Physical location of the device
+
+  # SNMP trap configurations
+  traps:
+    - type: snmp # Standard SNMP traps
+      enabled: true
+    - type: link # Link state change traps
+      enabled: true
+    - type: coldStart # System cold start notifications
+      enabled: true
+    - type: warmStart # System warm start notifications
+      enabled: true
+
+  # Global SNMP parameters
+  aaa_user_cache_timeout: 3600 # Cache timeout for AAA users in seconds
+  global_enforce_priv: False # Enforce privacy for all SNMP users
+  tcp_session_auth: False # TCP session authentication
+  protocol: true # Enable SNMP protocol
+  packetsize: 1500 # Maximum SNMP packet size
+
+  # SNMP trap receivers configuration
+  host:
+    - host: 192.168.1.100 # IP address of trap receiver
+      version: 2c # SNMP version (2c or 3)
+      community: NETBRAIN # Community string for trap authentication
+      traps: true # Enable trap sending to this host
+    - host: 192.168.1.101 # Secondary trap receiver
+      version: 2c
+      community: NETBRAIN
+      traps: true
 
 spines_ospf_process_id: UNDERLAY
 
