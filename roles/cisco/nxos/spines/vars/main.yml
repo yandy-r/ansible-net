@@ -1,6 +1,12 @@
 # File: spines/vars/main.yml
 ---
-# vars file for spines
+# -------------------------------------------------------------------
+# Spine Switch Configuration
+# -------------------------------------------------------------------
+
+# -------------------------------------------------------------------
+# Features to enable on spine switches
+# -------------------------------------------------------------------
 spines_features:
   - feature: nxapi
   - feature: bash-shell
@@ -15,7 +21,9 @@ spines_features:
   - feature: lldp
   - feature: "nv overlay"
 
+# -------------------------------------------------------------------
 # System settings for spine switches
+# -------------------------------------------------------------------
 spines_system:
   - hostname: "{{ inventory_hostname }}"
     system_mtu: 9216
@@ -27,7 +35,9 @@ spines_system:
       - server: 10.100.51.12 # Secondary DNS server
         vrf: management
 
+# -------------------------------------------------------------------
 # SNMP configuration for spine switches
+# -------------------------------------------------------------------
 spines_snmp:
   # SNMP community strings configuration
   communities:
@@ -71,10 +81,15 @@ spines_snmp:
       community: NETBRAIN
       traps: true
 
+# -------------------------------------------------------------------
+# Configuration of OSPf
+# -------------------------------------------------------------------
 spines_ospf_process_id: UNDERLAY
-
 spines_ospf_area: 0
 
+# -------------------------------------------------------------------
+# Configuration of BGP
+# -------------------------------------------------------------------
 spines_address_families:
   - afi: l2vpn
     safi: evepn
