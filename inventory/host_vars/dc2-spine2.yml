@@ -1,5 +1,4 @@
 router_id: 169.254.255.19
-anycast_rp: 169.254.255.100
 
 loopbacks:
   - interface: loopback0
@@ -22,3 +21,9 @@ ethernet_l3_interfaces:
 snmp:
   location: DC2
   contact: yandy@yandy.dev
+
+anycast_rp:
+  - anycast_rp: 169.254.255.100
+    address: "{{ router_id }}"
+  - anycast_rp: 169.254.255.100
+    address: "{{ hostvars['dc2-spine1']['router_id'] }}"
