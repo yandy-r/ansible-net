@@ -27,3 +27,25 @@
       hosts: "{{ spine_snmp_hosts | default(omit) }}"
     state: "{{ item.state | default('merged') }}"
   when: spines_snmp is defined
+
+- name: Configure global PIM settings
+  cisco.nxos.nxos_pim:
+    ssm_range: "{{ item.ssm_range | default(omit) }}"
+    bfd: "{{ item.bfd | default(omit) }}"
+  loop: "{{ spines_pim }}"
+  when: spines_pim is defined
+
+- name: Configure rp-address for PIM
+  cisco.nxos.nxos_pim_rp_address:
+    rp_address: "{{ item.rp_address }}"
+    group_list: "{{ item.group_list }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ spines_rp_address }}"
+  when: spines_rp_address is defined
+
+- name: Configure anycast-rp
+  cisco.nxos.nxos_config:
+    lines:
+      - "ip pim anycast-rp {{ anycast_rp }} {{ router_id }}"
+      - "ip pim anycast-rp {{ anycast_rp }} {{ router_id }}"
+  when: anycast_rp and router_id is defined
