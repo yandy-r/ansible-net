@@ -37,3 +37,11 @@
       - "interface {{ item.interface }}"
   loop: "{{ ethernet_l3_interfaces }}"
   when: ethernet_l3_interfaces is defined
+
+- name: Configure PIM on intrfaces
+  cisco.nxos.nxos_pim_interface:
+    interface: "{{ item.interface | default(omit) }}"
+    sparse: "{{ item.sparse | default(omit) }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ pim_interfaces }}"
+  when: pim_interfaces is defined
