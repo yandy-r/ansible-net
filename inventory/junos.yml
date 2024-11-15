@@ -1,0 +1,20 @@
+all:
+  vars:
+    ansible_ssh_common_args: "_o StrictHostKeyChecking=no"
+  hosts:
+    dc1-jspine1:
+      ansible_host: "172.21.207.11"
+    dc1-jspine2:
+      ansible_host: "172.21.207.12"
+    dc1-jleaf1:
+      ansible_host: "172.21.207.13"
+    dc1-jleaf2:
+      ansible_host: "172.21.207.14"
+    dc1-jbdr1:
+      ansible_host: "172.21.207.15"
+    dc1-jbdr2:
+      ansible_host: "172.21.207.16"
+    dc1-jbgw1:
+      ansible_host: "172.21.207.17"
+    dc1-jbgw2:
+      ansible_host: "172.21.207.18"
