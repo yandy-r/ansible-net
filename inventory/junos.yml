@@ -18,3 +18,19 @@ all:
       ansible_host: "172.21.207.17"
     dc1-jbgw2:
       ansible_host: "172.21.207.18"
+    dc2-jspine1:
+      ansible_host: "172.21.208.11"
+    dc2-jspine2:
+      ansible_host: "172.21.208.12"
+    dc2-jleaf1:
+      ansible_host: "172.21.208.13"
+    dc2-jleaf2:
+      ansible_host: "172.21.208.14"
+    dc2-jbdr1:
+      ansible_host: "172.21.208.15"
+    dc2-jbdr2:
+      ansible_host: "172.21.208.16"
+    dc2-jbgw1:
+      ansible_host: "172.21.208.17"
+    dc2-jbgw2:
+      ansible_host: "172.21.208.18"
