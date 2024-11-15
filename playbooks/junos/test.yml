@@ -1,5 +1,5 @@
 - name: Test config
-  hosts: dc1_jspines
+  hosts: dc1-jspine1
   tasks:
     - name: Backup current switch config (junos)
       junipernetworks.junos.junos_config:

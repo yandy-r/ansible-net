@@ -1,4 +1,4 @@
-## Last changed: 2024-11-15 02:58:00 UTC
+## Last changed: 2024-11-15 15:03:38 UTC
 version 23.2R1.14;
 system {
     host-name dc1-spine1;
@@ -23,8 +23,14 @@ system {
             ssh;
         }
     }
+    domain-name plsnetlab.local;
+    domain-search plsnetlab.local;
     arp {
         aging-timer 5;
+    }
+    management-instance;
+    name-server {
+        172.21.255.254 routing-instance mgmt_junos;
     }
     syslog {
         file interactive-commands {
@@ -64,11 +70,14 @@ snmp {
         authorization read-only;
     }
 }
-routing-options {
-    static {
-        route 10.0.0.0/8 next-hop 172.21.207.254;
-        route 172.16.0.0/12 next-hop 172.21.207.254;
-        route 192.168.0.0/16 next-hop 172.21.207.254;
+routing-instances {
+    mgmt_junos {
+        routing-options {
+            static {
+                route 0.0.0.0/0 next-hop 172.21.207.254;
+            }
+        }
+        description Management;
     }
 }
 protocols {
