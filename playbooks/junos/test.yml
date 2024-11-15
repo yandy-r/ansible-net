@@ -1,0 +1,29 @@
+- name: Test config
+  hosts: jspines
+  tasks:
+    - name: Backup current switch config (junos)
+      junipernetworks.junos.junos_config:
+        backup: true
+        backup_options:
+          dir_path: junos_backups
+          filename: "{{ inventory_hostname }}-set.junos"
+      register: backup_junos_location
+      when: ansible_network_os == 'junipernetworks.junos.junos'
+    - name: Backup current switch config (junos json)
+      junipernetworks.junos.junos_config:
+        backup: true
+        backup_options:
+          dir_path: junos_backups
+          filename: "{{ inventory_hostname }}.json"
+          backup_format: json
+      register: backup_junos_location
+      when: ansible_network_os == 'junipernetworks.junos.junos'
+    - name: Backup current switch config (junos text)
+      junipernetworks.junos.junos_config:
+        backup: true
+        backup_options:
+          dir_path: junos_backups
+          filename: "{{ inventory_hostname }}-text.txt"
+          backup_format: text
+      register: backup_junos_location
+      when: ansible_network_os == 'junipernetworks.junos.junos'
