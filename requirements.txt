@@ -3,3 +3,4 @@ ansible-lint
 ansible-pylibssh
 paramiko
 tox
+ncclient
