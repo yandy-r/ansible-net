@@ -4,5 +4,5 @@ ansible_connection: ansible.netcommon.network_cli
 ansible_httpapi_use_ssl: true
 ansible_httpapi_validate_certs: false
 ansible_user: admin
-# ansible_password: '{{ lookup("env", "ANSIBLE_NETWORK_SSH_PASS") }}'
+ansible_password: '{{ lookup("env", "ANSIBLE_CISCO_PASSWORD") }}'
 # ansible_network_cli_type: libssh
