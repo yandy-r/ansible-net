@@ -59,20 +59,20 @@ all:
         dc1_jbgws:
     dc2_jspines:
       hosts:
-        dc1-jspine1:
-        dc1-jspine2:
+        dc2-jspine1:
+        dc2-jspine2:
     dc2_jleafs:
       hosts:
-        dc1-jleaf1:
-        dc1-jleaf2:
+        dc2-jleaf1:
+        dc2-jleaf2:
     dc2_jborders:
       hosts:
-        dc1-jbdr1:
-        dc1-jbdr2:
+        dc2-jbdr1:
+        dc2-jbdr2:
     dc2_jbgws:
       hosts:
-        dc1-jbgw1:
-        dc1-jbgw2:
+        dc2-jbgw1:
+        dc2-jbgw2:
     dc2_junos:
       children:
         dc2_jspines:
