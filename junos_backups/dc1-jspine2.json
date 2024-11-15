@@ -1,0 +1,158 @@
+{
+    "configuration" : {
+        "@" : {
+            "xmlns" : "http://xml.juniper.net/xnm/1.1/xnm", 
+            "junos:changed-seconds" : "1731639786", 
+            "junos:changed-localtime" : "2024-11-15 03:03:06 UTC"
+        }, 
+        "version" : "23.2R1.14", 
+        "system" : {
+            "host-name" : "dc1-spine2", 
+            "root-authentication" : {
+                "encrypted-password" : "$6$6SR9b8hK$pOGXhaVvFRTnvNBooGWOORXeCIU9GpWfei8JBdQFcJ7OfQFRpX3zk7ztrjqZliVSpcvxlYW3J7RbKM5wC9L1O/"
+            }, 
+            "login" : {
+                "idle-timeout" : 60, 
+                "user" : [
+                {
+                    "name" : "admin", 
+                    "uid" : 2000, 
+                    "class" : "super-user", 
+                    "authentication" : {
+                        "encrypted-password" : "$6$Tib3Svcq$sHehAlqr/QaumqRG6tL2r50IgQoo1x.nww4IFhrtzIcnN2KmMLOd0YYt16vsNKP2CyxyK4FpUeYP.kaAUY3xK0"
+                    }
+                }
+                ]
+            }, 
+            "services" : {
+                "ssh" : {
+                    "protocol-version" : ["v2"]
+                }, 
+                "netconf" : {
+                    "ssh" : [null]
+                }
+            }, 
+            "arp" : {
+                "aging-timer" : 5
+            }, 
+            "syslog" : {
+                "file" : [
+                {
+                    "name" : "interactive-commands", 
+                    "contents" : [
+                    {
+                        "name" : "interactive-commands", 
+                        "any" : [null]
+                    }
+                    ]
+                }, 
+                {
+                    "name" : "messages", 
+                    "contents" : [
+                    {
+                        "name" : "any", 
+                        "notice" : [null]
+                    }, 
+                    {
+                        "name" : "authorization", 
+                        "info" : [null]
+                    }
+                    ]
+                }
+                ]
+            }, 
+            "processes" : {
+                "dhcp-service" : {
+                    "traceoptions" : {
+                        "file" : {
+                            "filename" : "dhcp_logfile", 
+                            "size" : "10m"
+                        }, 
+                        "level" : "all", 
+                        "flag" : [
+                        {
+                            "name" : "packet"
+                        }
+                        ]
+                    }
+                }
+            }
+        }, 
+        "interfaces" : {
+            "interface" : [
+            {
+                "name" : "fxp0", 
+                "unit" : [
+                {
+                    "name" : 0, 
+                    "family" : {
+                        "inet" : {
+                            "address" : [
+                            {
+                                "name" : "172.21.207.12/24"
+                            }
+                            ]
+                        }
+                    }
+                }
+                ]
+            }
+            ]
+        }, 
+        "multi-chassis" : {
+            "mc-lag" : {
+                "consistency-check" : [null]
+            }
+        }, 
+        "snmp" : {
+            "community" : [
+            {
+                "name" : "NETBRAIN", 
+                "authorization" : "read-only"
+            }
+            ]
+        }, 
+        "routing-options" : {
+            "static" : {
+                "route" : [
+                {
+                    "name" : "10.0.0.0/8", 
+                    "next-hop" : ["172.21.207.254"]
+                }, 
+                {
+                    "name" : "172.16.0.0/12", 
+                    "next-hop" : ["172.21.207.254"]
+                }, 
+                {
+                    "name" : "192.168.0.0/16", 
+                    "next-hop" : ["172.21.207.254"]
+                }
+                ]
+            }
+        }, 
+        "protocols" : {
+            "router-advertisement" : {
+                "interface" : [
+                {
+                    "name" : "fxp0.0", 
+                    "managed-configuration" : [null]
+                }
+                ]
+            }, 
+            "lldp" : {
+                "interface" : [
+                {
+                    "name" : "all"
+                }
+                ]
+            }, 
+            "lldp-med" : {
+                "interface" : [
+                {
+                    "name" : "all"
+                }
+                ]
+            }
+        }
+    }
+}

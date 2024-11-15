@@ -1,0 +1,26 @@
+set version 23.2R1.14
+set system host-name dc1-spine2
+set system root-authentication encrypted-password "$6$6SR9b8hK$pOGXhaVvFRTnvNBooGWOORXeCIU9GpWfei8JBdQFcJ7OfQFRpX3zk7ztrjqZliVSpcvxlYW3J7RbKM5wC9L1O/"
+set system login idle-timeout 60
+set system login user admin uid 2000
+set system login user admin class super-user
+set system login user admin authentication encrypted-password "$6$Tib3Svcq$sHehAlqr/QaumqRG6tL2r50IgQoo1x.nww4IFhrtzIcnN2KmMLOd0YYt16vsNKP2CyxyK4FpUeYP.kaAUY3xK0"
+set system services ssh protocol-version v2
+set system services netconf ssh
+set system arp aging-timer 5
+set system syslog file interactive-commands interactive-commands any
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system processes dhcp-service traceoptions file dhcp_logfile
+set system processes dhcp-service traceoptions file size 10m
+set system processes dhcp-service traceoptions level all
+set system processes dhcp-service traceoptions flag packet
+set interfaces fxp0 unit 0 family inet address 172.21.207.12/24
+set multi-chassis mc-lag consistency-check
+set snmp community NETBRAIN authorization read-only
+set routing-options static route 10.0.0.0/8 next-hop 172.21.207.254
+set routing-options static route 172.16.0.0/12 next-hop 172.21.207.254
+set routing-options static route 192.168.0.0/16 next-hop 172.21.207.254
+set protocols router-advertisement interface fxp0.0 managed-configuration
+set protocols lldp interface all
+set protocols lldp-med interface all
